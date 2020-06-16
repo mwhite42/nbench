@@ -1,0 +1,8 @@
+{
+  "name": "test",
+  "rw": "read",
+  "ioengine": "sync",
+  "blocksize": "4K",
+  "size": "1M",
+  "runtime": 300
+}

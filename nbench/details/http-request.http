@@ -1,0 +1,64 @@
+POST http://localhost:5000/api/benchmark
+Content-Type: application/json
+
+{
+  "name": "test001",
+  "rw": "read",
+  "ioengine": "sync",
+  "blocksize": "4K",
+  "size": "1M",
+  "runtime": 300
+}
+
+###
+POST http://localhost:5000/api/benchmark
+Content-Type: application/json
+
+{
+  "name": "test002",
+  "rw": "read",
+  "ioengine": "sync",
+  "blocksize": "4K",
+  "size": "1M",
+  "runtime": 300
+}
+
+###
+POST http://localhost:5000/api/benchmark
+Content-Type: application/json
+
+{
+  "name": "test003",
+  "rw": "read",
+  "ioengine": "sync",
+  "blocksize": "4K",
+  "size": "1M",
+  "runtime": 300
+}
+
+###
+POST http://localhost:5000/api/benchmark
+Content-Type: application/json
+
+{
+  "name": "test004",
+  "rw": "read",
+  "ioengine": "sync",
+  "blocksize": "4K",
+  "size": "1M",
+  "runtime": 300
+}
+
+###
+GET http://localhost:5000/api/benchmark
+Accept: application/json
+
+###
+POST http://localhost:5000/test_group
+Content-Type: application/json
+
+{
+  "name": "test group 001",
+   "benchmarks": ["5ee78af5d1ac0181a12cc0a7", "5ee79935dca050bcf5027990", "5ee79983dca050bcf5027991", "5ee79986dca050bcf5027992"]
+}
+
