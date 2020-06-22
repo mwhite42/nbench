@@ -2,16 +2,10 @@
   <div>
     <div class="luci-grid">
       <div class="luci-grid__col luci-grid__col-8"> <h1>Storage Workloads</h1> </div>
-      <div class="luci-grid__col luci-grid__col-4">
-        <router-link class="luci-navigation__link" to="/newworkload">
-          <button class="luci-button luci-button--primary">
-            <svg class="luci-icon" aria-labelledby="title">
-              <use xlink:href="luci.svg#messages">
-                <title>New Workload</title>
-              </use>
-            </svg>
+      <div class="luci-grid__col luci-grid__col-3">
+          <button class="luci-button luci-button--primary" @click="$router.push('/newworkload')">
+                New Workload
           </button>
-        </router-link>
       </div>
     </div>
     <div class="luci-table">

@@ -24,20 +24,5 @@ def test_me():
     return {'test': 'me'}
 
 
-@app.route('/favicon.ico')
-def favicon():
-    return redirect('/static/favicon.ico')
-
-
-@app.route('/index.html')
-def root():
-    return redirect('/static/index.html')
-
-
-@app.route('/')
-def content():
-    return send_from_directory("static", 'index.html')
-
-
 if __name__ == '__main__':
     app.run(debug=True)

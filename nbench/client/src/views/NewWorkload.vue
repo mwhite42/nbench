@@ -1,10 +1,15 @@
+<script>
+export default function saveWorkload() {
+  console.log('Saving it ');
+  console.log('Hopefully');
+}
+</script>
+
 <template>
   <!-- eslint-disable max-len -->
-
   <div>
-
     <h3>New Workload Form</h3>
-    <form class="luci-form luci-form--compressed" action="http://localhost:5000/api/benchmark" method="post">
+    <form class="luci-form luci-form--compressed" >
       <div class="luci-form__field-group">
         <label for="name" class="luci-form__label">Test Name</label>
         <input type="text" name="name" id="name" class="luci-form__input">
@@ -38,12 +43,13 @@
         </span>
       </div>
       <div class="luci-form__field-group">
-        <button class="luci-button luci-button--primary"> Submit</button>
+        <button class="luci-button luci-button--primary" onclick="saveWorkload()"> Submit</button>
       </div>
     </form>
   </div>
 </template>
 <script>
+
 export default {
   name: 'NewWorkload',
 
@@ -60,4 +66,5 @@ export default {
   },
 
 };
+
 </script>
