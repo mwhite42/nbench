@@ -4,6 +4,8 @@ import Home from '../views/Home.vue';
 import Benchmarks from '../views/Benchmarks.vue';
 import Workloads from '../views/Workloads.vue';
 import NewWorkload from '../views/NewWorkload.vue';
+import NewBenchmark from '../views/NewBenchmark.vue';
+import Settings from '../views/Settings.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +29,16 @@ const routes = [
     path: '/newworkload',
     name: 'NewWorkload',
     component: NewWorkload,
+  },
+  {
+    path: '/newbenchmark',
+    name: 'NewBenchmark',
+    component: NewBenchmark,
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
   },
   {
     path: '/about',

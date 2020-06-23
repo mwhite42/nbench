@@ -10,51 +10,57 @@ URL_PREFIX = "api"
 
 
 benchmark_schema = {
-    'name': {
+    'BenchmarkName': {
         'type': 'string',
         'minlength': 3,
         'maxlength': 50,
         'required': True,
     },
-    'workload': {
+    'Workloads': {
         'type': 'list',
         'required': True,
+    },
+    'Description': {
+        'type': 'string',
+        'minlength': 3,
+        'maxlength': 100,
+        'required': False,
     }
 }
 
 workload_schema = {
-    'name': {
+    'WorkloadName': {
         'type': 'string',
         'minlength': 3,
         'maxlength': 50,
         'required': True,
     },
-    'rw': {
+    'readWrite': {
         'type': 'string',
         # TODO: Add the rest of the supported types
         #  https://fio.readthedocs.io/en/latest/fio_doc.html
         'allowed': ["read", "write", "randread", "randwrite", 'randrw'],
         'required': True,
     },
-    'ioengine': {
+    'ioEngine': {
         'type': 'string',
         # TODO: Add the rest of the supported types from section 1.12.10. I/O engine at
         #  https://fio.readthedocs.io/en/latest/fio_doc.html
         'allowed': ["sync", "psync", "vsync", "pvsync", "pvsync2", "io_uring", "libaio", "posixaio"]
     },
-    'blocksize': {
+    'blockSize': {
         'type': 'string',
         'minlength': 1,
         'maxlength': 50,
         'required': True
     },
-    'size': {
+    'fileSize': {
         'type': 'string',
         'minlength': 1,
         'maxlength': 50,
         'required': True
     },
-    'runtime': {
+    'runTime': {
         'type': 'number',
         'required': True
     }
@@ -64,19 +70,23 @@ workload_schema = {
 # Define each workload configuration
 workload = {
     'item_title': 'workload',
-    'resource_methods': ['GET', 'POST', 'DELETE'],
+    'additional_lookup': {
+        'url': 'regex("[\w]+")',
+        'field': '_id'
+    },
+    'resource_methods': ['GET', 'POST'],
     'schema': workload_schema
 }
 
 # Group different benchmarks into a test
 benchmark = {
     'item_title': 'test',
-    'resource_methods': ['GET', 'POST', 'DELETE'],
+    'resource_methods': ['GET', 'POST'],
     'schema': benchmark_schema
 }
 
 DOMAIN = {
     'workload': workload,
-    'test_group': benchmark
+    'benchmark': benchmark,
 
 }

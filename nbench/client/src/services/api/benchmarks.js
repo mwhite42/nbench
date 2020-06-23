@@ -1,24 +1,23 @@
 import axios from 'axios';
 
 export default {
-  getWorkloads() {
-    console.log('Running getWorkloads from workloads.js');
-    axios.get('/api/logger?test=ing');
-    return axios.get('/api/workload')
+  getBenchmarks() {
+    console.log('getting benchmarks');
+    return axios.get('/api/benchmark')
       // eslint-disable-next-line no-underscore-dangle
       .then((response) => response.data._items);
   },
 
-  saveWorkload(data) {
+  saveBenchmark(data) {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
     const body = JSON.stringify(data);
-    console.log('Save Workload');
+    console.log('save benchmark');
     console.log(body);
-    axios.post('/api/workload', body, headers)
+    axios.post('/api/benchmark', body, headers)
       .then((res) => {
         console.log('RESPONSE: ', res);
       })
@@ -36,7 +35,7 @@ export default {
         'If-Match': etag,
       },
     };
-    const url = `/api/workload/${docid}`;
+    const url = `/api/benchmark/${docid}`;
     axios.delete(url, headers)
       .then((res) => {
         console.log('RESPONSE: ', res);

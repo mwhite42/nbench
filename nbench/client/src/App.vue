@@ -43,6 +43,9 @@
                 <router-link class="luci-navigation__link" to="/benchmarks">Benchmarks</router-link>
               </li>
               <li class="luci-navigation__item">
+                <router-link class="luci-navigation__link" to="/settings">Settings</router-link>
+              </li>
+              <li class="luci-navigation__item">
                 <router-link class="luci-navigation__link" to="/about">About</router-link>
               </li>
             </ul>
@@ -63,7 +66,6 @@
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
       </div>
-      <router-view/>
     </div>
   </div>
 

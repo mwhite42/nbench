@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="luci-grid">
-      <div class="luci-grid__col luci-grid__col-8"> <h1>Storage Workloads</h1> </div>
+      <div class="luci-grid__col luci-grid__col-8"> <h1>Workloads</h1> </div>
       <div class="luci-grid__col luci-grid__col-3">
           <button class="luci-button luci-button--primary" @click="$router.push('/newworkload')">
                 New Workload
@@ -22,13 +22,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="post in posts" :key="post.name">
-          <td> {{post.name}} </td>
-          <td> {{post.blocksize}} </td>
-          <td> {{post.size}} </td>
-          <td> {{post.runtime}} </td>
-          <td> {{post.ioengine}} </td>
-          <td> <a href="#">Remove</a> </td>
+        <tr v-for="(post, index) in posts" :key="index">
+          <td> {{post.WorkloadName}} </td>
+          <td> {{post.blockSize}} </td>
+          <td> {{post.fileSize}} </td>
+          <td> {{post.runTime}} </td>
+          <td> {{post.ioEngine}} </td>
+          <td>
+             <button v-on:click='deleteWorkload(post._etag, post._id, index)'
+                     class="luci-button luci-button--small" > Remove
+             </button>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -37,7 +41,7 @@
 </template>
 
 <script>
-import WorkloadApi from '@/services/api/workloads';
+import Workload from '@/services/api/workloads';
 
 export default {
   name: 'Workloads',
@@ -50,7 +54,7 @@ export default {
   },
 
   created() {
-    WorkloadApi.getWorkloads()
+    Workload.getWorkloads()
       .then((posts) => {
         console.log(posts);
         this.posts = posts;
@@ -59,6 +63,17 @@ export default {
       .finally(() => {
         this.loading = false;
       });
+  },
+  methods: {
+    deleteWorkload(etag, docid, index) {
+      console.log('Delete Workload', etag, ' | ', docid);
+
+      Workload.deleteWorkload(etag, docid);
+      this.posts.splice(index);
+    },
+  },
+  events: {
+    deleteWorkload() {},
   },
 };
 </script>
