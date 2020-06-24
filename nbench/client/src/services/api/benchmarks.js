@@ -20,15 +20,14 @@ export default {
     axios.post('/api/benchmark', body, headers)
       .then((res) => {
         console.log('RESPONSE: ', res);
+        this.router.push('benchmarks');
       })
       .catch((err) => {
         console.log('Error: ', err);
       });
-
-    return 'nothing';
   },
 
-  deleteWorkload(etag, docid) {
+  deleteBenchmark(etag, docid) {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +42,6 @@ export default {
       .catch((err) => {
         console.log('Error: ', err);
       });
-
-    return 'nothing';
+    this.getBenchmarks();
   },
 };

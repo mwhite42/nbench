@@ -22,9 +22,31 @@ benchmark_schema = {
     },
     'Description': {
         'type': 'string',
-        'minlength': 3,
-        'maxlength': 100,
         'required': False,
+    },
+    'DatastoreName': {
+        'type': 'string',
+        'required': True,
+    }
+}
+vCenter_schema = {
+    'username': {
+        'type': 'string',
+        'minlength': 3,
+        'maxlength': 50,
+        'required': True,
+    },
+    'password': {
+        'type': 'string',
+        'minlength': 3,
+        'maxlength': 50,
+        'required': True,
+    },
+    'address': {
+        'type': 'string',
+        'minlength': 3,
+        'maxlength': 50,
+        'required': True,
     }
 }
 
@@ -80,13 +102,20 @@ workload = {
 
 # Group different benchmarks into a test
 benchmark = {
-    'item_title': 'test',
+    'item_title': 'benchmark',
     'resource_methods': ['GET', 'POST'],
     'schema': benchmark_schema
+}
+
+vCenter = {
+    'item_title': 'vCenter',
+    'resource_methods': ['GET', 'POST'],
+    'schema': vCenter_schema
 }
 
 DOMAIN = {
     'workload': workload,
     'benchmark': benchmark,
+    'settings/vCenter': vCenter,
 
 }

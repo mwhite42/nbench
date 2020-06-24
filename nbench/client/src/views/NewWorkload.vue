@@ -38,6 +38,9 @@
       <div class="luci-form__field-group">
         <button v-on:click='saveWorkload()' class="luci-button luci-button--primary" > Submit</button>
       </div>
+      <span>
+        {{working}}
+      </span>
     </form>
   </div>
 </template>
@@ -49,6 +52,7 @@ export default {
 
   data() {
     return {
+      working: 'Test Message',
       userData: {
         WorkloadName: '',
         blockSize: '4k',
@@ -69,7 +73,7 @@ export default {
   },
   methods: {
     saveWorkload() {
-      return Workloads.saveWorkload(this.userData);
+      Workloads.saveWorkload(this.userData);
     },
     getWorkloads() {
       return Workloads.getWorkloads();

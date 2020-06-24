@@ -26,7 +26,7 @@
           <td> {{post.Description}}</td>
           <td> {{post._created}}</td>
           <td>
-             <button v-on:click='deleteBenchmark(post._etag, post._id, index)'
+             <button v-on:click='runBenchmark(post._etag, post._id, index)'
                      class="luci-button luci-button--small" > Run
              </button>
           </td>
@@ -73,9 +73,14 @@ export default {
       Benchmark.deleteBenchmark(etag, docid);
       this.posts.splice(index);
     },
+    runBenchmark(etag, docid, index) {
+      console.log('Run Benchmark', etag, ' | ', docid, ' | ', index);
+      this.$router.push('Home');
+    },
   },
   events: {
     deleteBenchmark() {},
+    runBenchmark() {},
   },
 };
 </script>

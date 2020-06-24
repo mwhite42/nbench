@@ -1,5 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
+  <div>
+  <notifications group="foo" />
   <div class="luci-navigation-container luci-navigation-container--navigation-vertical-is-active">
     <div class="luci-navigation-container__header">
       <header class="luci-masthead">
@@ -69,4 +71,5 @@
     </div>
   </div>
 
+  </div>
 </template>
